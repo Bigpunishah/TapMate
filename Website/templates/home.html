@@ -1,0 +1,61 @@
+<!-- Create a block so it can be used in the base.html file -->
+{% extends 'base.html' %} {% block content %}
+
+<!-- Load static for images/css/js -->
+{% load static %}
+
+{% if user.is_authenticated %}
+
+
+<h1>Show details on stuff</h1>
+
+
+
+
+{% else %}
+
+<div class="col-md-10 offset-md-1">
+  <!-- Picture cards -->
+  <div class="card-group">
+    <div class="card">
+      <img
+        src="{% static 'img/man_using_phone.png' %}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">Keep Up.</h5>
+      </div>
+    </div>
+
+    <div class="card">
+      <img
+        src="{% static 'img/people_together.png' %}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">Stay Connected.</h5>
+      </div>
+    </div>
+
+    <div class="card">
+      <img
+        src="{% static 'img/traveling.png' %}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">Explore.</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endif %}
+
+<br>
+
+
+{% endblock %}

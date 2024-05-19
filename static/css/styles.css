@@ -1,0 +1,13 @@
+.custom-button {
+    background-color: #5a8100; /* Custom color */
+    color: #ffffff; /* Text color */
+    border-color: #5a8100; /* Border color */
+}
+
+.cust-card {
+    background-color: #d36725;
+    padding: 20px; /* Optional: Add padding if desired */
+    border-radius: 10px; /* Optional: Add border radius if desired */
+}
+
+

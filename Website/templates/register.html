@@ -1,0 +1,42 @@
+<!-- Create a block so it can be used in the base.html file -->
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="col-md-6 offset-md-3">
+	
+	<div class="card p-3" style="background-color: #d36725;">
+		<br>
+
+	
+
+    <h1>Register</h1>
+    <br>
+
+    <form method="POST" action="">
+        {% csrf_token %} <!--Added so hackers dont get in-->
+
+        <!-- Checks for erros & displays them on screen -->
+        {% if form.errors %}
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			  Your Form Has Errors
+			  {% for field in form %}
+			  	{% if field.errors %}
+			  		{{ field.errors }}
+			  	{% endif %}
+			  {% endfor %}
+			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		{% endif %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="btn custom-button">Register</button>
+    <form>
+		
+	</div>
+
+</div>
+
+{% endblock %}
