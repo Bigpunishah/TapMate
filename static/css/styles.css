@@ -1,3 +1,5 @@
+
+
 .custom-navbar {
     padding-left: 20px;
     padding-right: 20px;
@@ -29,6 +31,42 @@
 .custom-base {
     background-color: #E6F7FF; /* Light Blue */
 }
+
+
+
+
+
+
+
+.custom-button,
+.custom-button:focus {
+  padding: 10px 25px; /* Adjusted padding */
+  margin: 0; /* Removed margin */
+  border-radius: 50px;
+  color: #5a5af3;
+  border: 2px solid #5a5af3;
+  background: transparent;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: color 0.3s, background 0.3s;
+}
+
+.custom-button:hover,
+.custom-button:focus:hover {
+  color: #fff;
+  background: #7272f5;
+}
+
+.custom-button i,
+.custom-button:focus i {
+  font-size: 12px;
+  line-height: 0;
+  margin-left: 5px;
+}
+
 
 
 /*--------------------------------------------------------------
@@ -126,7 +164,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 10px 0 10px 30px;
-    font-size: 15px;
+    font-size: 16px;
     color: #434175;
     white-space: nowrap;
     transition: 0.3s;
@@ -145,6 +183,22 @@ body {
   .navbar li:hover>a {
     color: #5a5af3;
   }
+
+.navbar .nav-button,
+.navbar .nav-button:focus {
+  padding: 6px 25px;
+  margin-left: 30px;
+  border-radius: 50px;
+  background-color: #5a5af3;
+  color: #fff;
+  border: 2px solid #5a5af3;
+}
+
+.navbar .nav-button:hover,
+.navbar .nav-button:focus:hover {
+  color: #5a5af3;
+  background: #fff;
+}
 
   .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
     color: #5a5af3 !important; /* Adjust to your desired active link color */

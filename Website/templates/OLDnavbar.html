@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg custom-navbar" >
+  <!-- This is the main navigation bar container -->
+  <div class="container-fluid">
+    <!-- This is the brand logo or name -->
+    <a class="navbar-brand " href="{% url 'home' %}" style="text-decoration: underline;">TapMate</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+      <!-- This is the container for the left side navigation items -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        {% if user.is_authenticated %}
+        <!-- If the user is authenticated, these items will be displayed -->
+        <li class="nav-item">
+          <a class="nav-link active text-light" aria-current="page" href="{% url 'home' %}">Register Tag</a>
+        </li>
+        {% else %}
+        <!-- If the user is not authenticated, these items will be displayed -->
+        <li class="nav-item">
+          <a class="nav-link text-light " href="{% url 'login' %}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="{% url 'register' %}">Register</a>
+        </li>
+        {% endif %}
+      </ul>
+
+
+      {% if user.is_authenticated %}
+      <!-- This is the container for the right side navigation items -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <!-- This is the dropdown menu for the username -->
+          <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ request.user.username }}
+          </a>
+          <!-- This is the dropdown menu content -->
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Something</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+            
+          </ul>
+        </li>
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+</nav>
