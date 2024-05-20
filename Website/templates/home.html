@@ -2,40 +2,91 @@
 {% extends 'base.html' %} {% block content %}
 
 <!-- Load static for images/css/js -->
-{% load static %}
+{% load static %} {% if user.is_authenticated %}
 
-{% if user.is_authenticated %}
+<!-- Check to see if tap_tags were sent over from backend -->
+{% if tap_tags %}
+<h2>Your Tap Tags:</h2>
 
+<ul>
+  <!-- for loop for all tags associated with email -->
+  {% for tag in tap_tags %}
 
-<h1>Show details on stuff</h1>
+  <!-- List tags -->
+  <li>{{ tag }}</li>
 
-
-
-
+  {% endfor %}
+</ul>
 {% else %}
 
+<div class="card cust-card">
+  <div class="card-body text-light">
+    <h4>Sorry, no TapTags found associated with your email.</h4>
+    <br /><br />
+    <h5>
+      If you are having trouble feel free to
+      <a class="text-light" href="#" style="text-decoration: underline"
+        >contact support</a
+      >
+    </h5>
+  </div>
+</div>
+
+{% endif %} {% else %}
+
+<!-- For hero! -->
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-lg-7 pt-2 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+        <h1>Easy Marketing Solutions For Your Business</h1>
+        <ul>
+          <li><i class="ri-check-line"></i> Dolorem ratione dolorum</li>
+          <li>
+            <i class="ri-check-line"></i> Quo nihil natus ea non pariatur optio
+            occaecati
+          </li>
+          <li>
+            <i class="ri-check-line"></i> Duis aute irure dolor in reprehenderit
+            in
+          </li>
+        </ul>
+        <div class="mt-3">
+          <a href="#" class="btn-get-started scrollto">Get Started</a>
+        </div>
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2">
+        <div class="card">
+          <img src="{% static 'img/traveling.png' %}" class="card-img-top" alt="..."/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Hero -->
+<!-- <div class="d-flex align-items-center"></div> -->
+
 <div class="col-md-10 offset-md-1">
+  <br />
+
+  <div>
+    <h1>Welcome to TapMate!</h1>
+  </div>
+
+  <br /><br />
+
   <!-- Picture cards -->
-  <div class="card-group">
+  <div class="card-group cust-border">
     <div class="card">
       <img
         src="{% static 'img/man_using_phone.png' %}"
         class="card-img-top"
         alt="..."
       />
-      <div class="card-body">
+      <div class="card-body" style="background-color: #fff9e9">
         <h5 class="card-title">Keep Up.</h5>
-      </div>
-    </div>
-
-    <div class="card">
-      <img
-        src="{% static 'img/people_together.png' %}"
-        class="card-img-top"
-        alt="..."
-      />
-      <div class="card-body">
-        <h5 class="card-title">Stay Connected.</h5>
       </div>
     </div>
 
@@ -45,17 +96,24 @@
         class="card-img-top"
         alt="..."
       />
-      <div class="card-body">
+      <div class="card-body" style="background-color: #fff9e9">
+        <h5 class="card-title">Stay Connected.</h5>
+      </div>
+    </div>
+
+    <div class="card">
+      <img
+        src="{% static 'img/man_on_phone.png' %}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body" style="background-color: #fff9e9">
         <h5 class="card-title">Explore.</h5>
       </div>
     </div>
   </div>
 </div>
 
+{% include 'contact.html' %}
 
-{% endif %}
-
-<br>
-
-
-{% endblock %}
+{% endif %} {% endblock %}

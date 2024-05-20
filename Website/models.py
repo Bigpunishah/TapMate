@@ -12,7 +12,7 @@ class TapTag(models.Model):
     intialized = models.CharField(max_length=10) # Initialized yet or not
 
     def __str__(self):
-        return (f"{self.first_name} {self.last_name}")
+        return (f"{self.tag_name} - {self.tag_location}")
     
     # ! After creating, run 
     # todo - `python manage.py makemigrations`
