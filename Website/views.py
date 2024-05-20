@@ -6,6 +6,8 @@ from .models import TapTag
 
 # Create a dir named `templates` to add .html files
 # Create your views here.
+
+
 def home(request):
     # is user auth
     if request.user.is_authenticated:
