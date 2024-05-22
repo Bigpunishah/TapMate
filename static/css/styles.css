@@ -9,43 +9,66 @@
 }
 
 .custom-container {
-    width: 100%; /* Fluid width */
-    padding: 20px; /* Padding */
-    margin-right: auto; /* Auto margin for centering */
-    margin-left: auto; /* Auto margin for centering */
+    margin-right: 40px; /* Auto margin for centering */
+    margin-left: 40px; /* Auto margin for centering */
 }
 
 
 .cust-card {
-    background-color: #FAF3E0; /* Light Beige */
-    padding: 20px; /* Optional: Add padding if desired */
+    background-color: #E6F7FF; 
+    padding: 5px; /* Optional: Add padding if desired */
     border-radius: 10px; /* Optional: Add border radius if desired */
 }
 
 .cust-border {
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
     border-radius: 6px; /* Adjust this value to change the corner radius */
-}
-
-
-.custom-base {
+  }
+  
+  
+  .custom-color {
     background-color: #E6F7FF; /* Light Blue */
-}
+  }
+  
+  .custom-button,
+  .custom-button:focus {
+    padding: 10px 25px; /* Adjusted padding */
+    margin: 0; /* Removed margin */
+    border-radius: 50px;
+    color: #5a5af3;
+    border: 2px solid #5a5af3;
+    background: transparent;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: color 0.3s, background 0.3s;
+  }
+  
+  .custom-button:hover,
+  .custom-button:focus:hover {
+    color: #fff;
+    background: #7272f5;
+  }
+  
+  .custom-button i,
+  .custom-button:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+  }
+  
 
 
-
-
-
-
-
-.custom-button,
-.custom-button:focus {
+.custom-button2,
+.custom-button2:focus {
   padding: 10px 25px; /* Adjusted padding */
   margin: 0; /* Removed margin */
   border-radius: 50px;
-  color: #5a5af3;
+  color: #fff;
   border: 2px solid #5a5af3;
-  background: transparent;
+  background: #5a5af3;
   font-size: 15px;
   display: inline-flex;
   align-items: center;
@@ -54,18 +77,20 @@
   transition: color 0.3s, background 0.3s;
 }
 
-.custom-button:hover,
-.custom-button:focus:hover {
-  color: #fff;
-  background: #7272f5;
+.custom-button2:hover,
+.custom-button2:focus:hover {
+  color: #5a5af3;
+  border: 2px solid #5a5af3;
 }
 
-.custom-button i,
-.custom-button:focus i {
+.custom-button2 i,
+.custom-button2:focus i {
   font-size: 12px;
   line-height: 0;
   margin-left: 5px;
 }
+
+
 
 
 
@@ -200,6 +225,11 @@ body {
   background: #fff;
 }
 
+.navbar-mobile .nav-button,
+.navbar-mobile .nav-button:focus {
+  margin: 15px;
+}
+
   .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
     color: #5a5af3 !important; /* Adjust to your desired active link color */
 }
@@ -240,6 +270,83 @@ body {
     .navbar-toggler[aria-expanded="true"] ~ .navbar-collapse {
         display: block;
     }
+}
+
+/**
+* Mobile Navigation 
+*/
+.mobile-nav-toggle {
+  color: #434175;
+  font-size: 28px;
+  cursor: pointer;
+  display: none;
+  line-height: 0;
+  transition: 0.3s;
+}
+
+.mobile-nav-toggle.bi-x {
+  color: #434175;
+}
+
+@media (max-width: 991px) {
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .navbar ul {
+    display: none;
+    
+  }
+}
+
+.navbar-mobile {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+}
+
+.mobile-nav-toggle {
+  position: -ms-page;
+  top: 15px;
+  right: 15px;
+  z-index: 900;
+}
+
+.navbar-mobile ul {
+  display: block;
+  position: fixed;
+  top: 60px;
+  right: 15px;
+  left: 15px;
+  padding: 10px 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  overflow-y: auto;
+  transition: 6s;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
+  
+}
+
+.navbar-mobile a,
+.navbar-mobile a:focus {
+  padding: 10px 20px;
+  font-size: 15px;
+  color: #434175;
+}
+
+.navbar-mobile a:hover,
+.navbar-mobile .active,
+.navbar-mobile li:hover>a {
+  color: #5a5af3;
+}
+
+.navbar-mobile .getstarted,
+.navbar-mobile .getstarted:focus {
+  margin: 15px;
 }
   
   
@@ -389,7 +496,7 @@ body {
   }
   
   .section-bg {
-    background-color: #eeeef5;
+    background-color: #E6F7FF;
   }
   
   .section-title {
@@ -684,6 +791,8 @@ body {
     transition: 0.6s;
   }
   
-  
-  
+  .footer-bg{
+    background-color: #E6F7FF;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
+  }
   

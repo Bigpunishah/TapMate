@@ -2,26 +2,27 @@
   <div class="content-wrap">
     <!-- Your page content goes here -->
 
-    <footer class="footer mt-auto py-3" style="background-color: #B74803;">
+    <footer class="footer mt-auto py-3 footer-bg footer-bg">
       <div class="container d-flex justify-content-center py-5">
-        <button type="button" class="btn custom-button btn-floating mx-2">
-          <a class="text-light" href="{% url 'home' %}">Home</a>
+        <button type="button" class="custom-button2 btn-floating mx-2">
+          <a href="{% url 'home' %}" class="text-light">Home</a>
         </button>
-        <button type="button" class="btn custom-button btn-floating mx-2">
-          <a class="text-light" href="https://www.amazon.com">Order Now</a>
+        <button type="button" class="custom-button2 btn-floating mx-2">
+          <a href="https://www.amazon.com" class="text-light">Order Now</a>
         </button>
-        <button type="button" class="btn custom-button btn-floating mx-2">
-          <a class="text-light" href="{% url 'home' %}">About Us</a>
+        <button type="button" class="custom-button2 btn-floating mx-2">
+          <a href="{% url 'home' %}" class="text-light">About Us</a>
         </button>
-        <button type="button" class="btn custom-button btn-floating mx-2">
-          <a class="text-light" href="{% url 'home' %}">Contact</a>        
+        <button type="button" class="custom-button2 btn-floating mx-2">
+          <a href="{% url 'home' %}" class="text-light">Contact</a>        
         </button>
       </div>
 
       <!-- Copyright -->
-      <div class="text-center text-white p-3">
+      <div class="text-center p-3">
         © 2024 Copyright: TapMate
-        <a class="text-white" href="https://Google.com/">TapMate.com</a>
+        <br>
+        <a href="https://Google.com/">TapMate.com</a>
       </div>
       <!-- Copyright -->
     </footer>
