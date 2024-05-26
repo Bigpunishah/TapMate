@@ -15,9 +15,9 @@
 
 
 .cust-card {
-    background-color: #E6F7FF; 
-    padding: 5px; /* Optional: Add padding if desired */
-    border-radius: 10px; /* Optional: Add border radius if desired */
+  background-color: #fff; 
+  padding: 5px; /* Default padding */
+  border-radius: 10px; /* Optional: Add border radius if desired */
 }
 
 .cust-border {
@@ -29,6 +29,10 @@
   .custom-color {
     background-color: #E6F7FF; /* Light Blue */
   }
+
+  .text_color{
+    color: #7272f5;
+  }
   
   .custom-button,
   .custom-button:focus {
@@ -37,6 +41,7 @@
     border-radius: 50px;
     color: #5a5af3;
     border: 2px solid #5a5af3;
+    max-height: 40px;
     background: transparent;
     font-size: 15px;
     display: inline-flex;
@@ -69,6 +74,7 @@
   color: #fff;
   border: 2px solid #5a5af3;
   background: #5a5af3;
+  max-height: 40px;
   font-size: 15px;
   display: inline-flex;
   align-items: center;
@@ -80,7 +86,7 @@
 .custom-button2:hover,
 .custom-button2:focus:hover {
   color: #5a5af3;
-  border: 2px solid #5a5af3;
+  background-color: #fff;
 }
 
 .custom-button2 i,
@@ -209,6 +215,21 @@ body {
     color: #5a5af3;
   }
 
+.navbar .nav-button-outline,
+.navbar .nav-button-outline:focus {
+  padding: 6px 25px;
+  margin-left: 30px;
+  border-radius: 50px;
+  color: #5a5af3;
+  border: 2px solid #5a5af3;
+}
+
+.navbar .nav-button-outline:hover,
+.navbar .nav-button-outline:focus:hover {
+  color: #fff;
+  background: #7272f5;
+}
+
 .navbar .nav-button,
 .navbar .nav-button:focus {
   padding: 6px 25px;
@@ -217,6 +238,7 @@ body {
   background-color: #5a5af3;
   color: #fff;
   border: 2px solid #5a5af3;
+  text-decoration: none;
 }
 
 .navbar .nav-button:hover,
@@ -234,22 +256,22 @@ body {
     color: #5a5af3 !important; /* Adjust to your desired active link color */
 }
   
-  .navbar .getstarted,
-  .navbar .getstarted:focus {
-    padding: 6px 25px;
-    margin-left: 30px;
-    border-radius: 50px;
-    color: #5a5af3;
-    border: 2px solid #5a5af3;
-  }
-  
-  .navbar .getstarted:hover,
-  .navbar .getstarted:focus:hover {
-    color: #fff;
-    background: #7272f5;
-  }
+.navbar .getstarted,
+.navbar .getstarted:focus {
+  padding: 6px 25px;
+  margin-left: 30px;
+  border-radius: 50px;
+  color: #5a5af3;
+  border: 2px solid #5a5af3;
+}
 
-  /* Hide the navbar-toggler-icon by default */
+.navbar .getstarted:hover,
+.navbar .getstarted:focus:hover {
+  color: #fff;
+  background: #7272f5;
+}
+
+/* Hide the navbar-toggler-icon by default */
 .navbar-toggler {
     display: none;
 }
@@ -281,11 +303,17 @@ body {
   cursor: pointer;
   display: none;
   line-height: 0;
-  transition: 0.3s;
+  transition: 4.3s;
 }
 
 .mobile-nav-toggle.bi-x {
   color: #434175;
+}
+
+.mobile-nav-toggle {
+  position: -ms-page;
+  top: 15px;
+  right: 15px;
 }
 
 @media (max-width: 991px) {
@@ -295,7 +323,6 @@ body {
 
   .navbar ul {
     display: none;
-    
   }
 }
 
@@ -306,27 +333,20 @@ body {
   right: 0;
   left: 0;
   bottom: 0;
-  z-index: 999;
 }
 
-.mobile-nav-toggle {
-  position: -ms-page;
-  top: 15px;
-  right: 15px;
-  z-index: 900;
-}
 
 .navbar-mobile ul {
-  display: block;
+  display: inline;
   position: fixed;
   top: 60px;
   right: 15px;
-  left: 15px;
+  left: 50%;
   padding: 10px 0;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.9);
   overflow-y: auto;
-  transition: 6s;
+  transition: 2s;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
   
 }

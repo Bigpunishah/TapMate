@@ -37,7 +37,8 @@ def login_user(request):
             return redirect('login')
         
     else:
-        return render(request, 'login.html', {})
+        # Sending is_login_page to ensure correct navbar items appear
+        return render(request, 'login.html', {'is_login_page': True})
 
 
 # Logout user
@@ -63,8 +64,9 @@ def register_user(request):
     else:
         # Not POSTing yet but load form
         form = SignUpForm()
-        return render(request, 'register.html', {'form': form})
-    return render(request, 'register.html', {'form': form})
+        # !Update code to where register shows certain portions of code on nav bar - update colors for login & register.
+        return render(request, 'register.html', {'form': form, 'is_register_page': True})
+    return render(request, 'register.html', {'form': form, 'is_register_page': True})
 
 
 # Need to create view for the listed tags for user & then display the junk & stuff

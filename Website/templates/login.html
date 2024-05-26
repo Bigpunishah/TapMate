@@ -3,29 +3,38 @@
 
 {% block content %}
 
+<!-- Page title -->
+{% block title %}Login - TapMate{% endblock %}
+
 <!-- Center the div -->
-<div class="col-md-6 offset-md-3">
-  
-    <br>
+<div class="col-md-6 offset-md-3 mt-5">
+
+  <br><br><br><br>
+  <br>
     <br/>
     <form method="POST" action="{% url 'login' %}" >
         {% csrf_token %} <!--Added so hackers dont get in-->
 
-        <div class="card cust-card cust-border">
-            <h1>Login</h1>
+        
+
+        <div class="custom-container cust-card cust-border text_color">
+            <h3>Login</h3>
             <div class="card-body">
 
                 <form>
                     <div class="mb-3">
                       <label class="form-label">Username</label>
                       <input type="text" class="form-control input-field" name="username" placeholder="Username" required>
-                      <div id="help" class="form-text">We'll never share your info with anyone else.</div>
                     </div>
                     <div class="mb-3">
                       <label for="exampleInputPassword1" class="form-label">Password</label>
                       <input type="password" class="form-control input-field" name="password" placeholder="Password" required>
                     </div>
-                    <button type="submit" class="btn custom-button">Login</button>
+                    <button type="submit" class="custom-button2">Login</button>
+                    <br>
+                    <div class="offset-md-4">
+                    <span class="form-text text-muted"><small>Dont have an account? <a href="{% url 'register' %}">Register!</a></small></span>
+                    </div>
                   </form>
 
               
@@ -35,5 +44,9 @@
         
     </form>
   </div>
+
+  <br><br><br><br>
+  <br><br><br><br>
+  <br><br><br><br>
 
   {% endblock %}

@@ -1,20 +1,31 @@
-    <div class="custom-container d-flex align-items-center justify-content-between">
-  
-      <h1 class="logo"><a href="{% url 'home' %}">TapMate.</a></h1>
-  
-      <nav id="navbar" class="navbar">
-          <ul>
+<div class="custom-container d-flex align-items-center justify-content-between">
+  <h1 class="logo"><a href="{% url 'home' %}">TapMate.</a></h1>
+  <nav id="navbar" class="navbar">
+    <ul>
+      {% if is_login_page %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+        <li class="nav-item"><a class="nav-button" href="{% url 'register' %}">Register</a></li>
+      {% else %}
+        {% if is_register_page %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+          <li class="nav-item"><a class="nav-button" href="{% url 'login' %}">Login</a></li>
+        {% else %}
+          {% if user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url '#' %}">Tags</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url '#' %}">Account</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url '#' %}">Settings</a></li>
+          {% else %}
             <li class="nav-item"><a class="nav-link scrollto active" href="#hero">Home</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#about">About</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#services">Services</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#contact">Contact</a></li>
             <li class="nav-item"><a class="getstarted scrollto" href="#about">Get Started</a></li>
             <li class="nav-item"><a class="nav-button" href="{% url 'login' %}">Login</a></li>
-          </ul>
-          <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav>
-
-        
-  
-    </div>
-  
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    </ul>
+    <i class="bi bi-list mobile-nav-toggle"></i>
+  </nav>
+</div>
