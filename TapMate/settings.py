@@ -75,23 +75,27 @@ WSGI_APPLICATION = 'TapMate.wsgi.application'
 # # Database
 # # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# MongoDB
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'TapMate',
-        'CLIENT': {
-           'host': 'mongodb+srv://BigAdmin:TanyQB6JWqj6E6Z7@cluster0.vgs1rbm.mongodb.net/',
-        }
+        'ENGINE': 'django.db.backends.mysql', #Change to appropriate DB 
+        'NAME': 'tapmate_db', #DB name
+        'USER': 'root', #User from mysql
+        'PASSWORD': 'admin', #Password set
+        'HOST': 'localhost', #Host
+        'PORT': '3306', #Port
     }
 }
+
+# MongoDB
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'TapMate',
+#         'CLIENT': {
+#            'host': 'mongodb+srv://BigAdmin:TanyQB6JWqj6E6Z7@cluster0.vgs1rbm.mongodb.net/',
+#         }
+#     }
+# }
 
 
 
