@@ -1,43 +1,19 @@
 {% extends 'base.html' %} 
+
+{% block title %}Home - TapMate{% endblock %}
+
 {% block content %}
 
 {% if user.is_authenticated %}
 
-{% block title %}Home - TapMate{% endblock %}
 
 {% load static %}
 
-<h2>Your Tap Tags:</h2>
-  {% if tap_tags %}
-
-  <ul>
-    <!-- for loop for all tags associated with email -->
-    {% for tag in tap_tags %}
-
-    <!-- List tags -->
-    <li>{{ tag }}</li>
-
-    {% endfor %}
-  </ul>
-  {% else %}
-
-  <br>
-  <br>
-  <div class="card cust-card cust-border custom-container centered-card">
-    <div class="card-body justify-content-center">
-      <h4>Sorry, no TapTags found associated with your account.</h4>
-      <br /><br />
-      <h3>Learn how to claim a Tap Tag right now!</h3>
-      <iframe src="youtube.com" frameborder="0"></iframe>
-      <h5>
-        If you are having trouble feel free to
-        <a href="#" style="text-decoration: underline">contact support</a>
-        <p>Add how to add a tap tag & such</p>
-      </h5>
+  <div class="custom-container">
+    <div>
+      <h1>Welcome back user!</h1>
     </div>
   </div>
-
-{% endif %} 
 {% else %}
 
 

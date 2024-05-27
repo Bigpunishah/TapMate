@@ -39,14 +39,7 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'
 
-    # Check username for duplicates
-    def check_username(self):
-        username = self.cleaned_data.get('username')
-        if User.objects.filter(username=username).exists():
-            return username + " is taken"
-        else:
-            return None
-
+    # Already checks users
     # Check email for duplicates
     def check_email(self):
         email = self.cleaned_data.get('email')

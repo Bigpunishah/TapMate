@@ -30,3 +30,5 @@ class TapTag(models.Model):
     # run `python manage.py migrate Website zero` 
     # zero for no migrations otherwise put which migration
     #  `python manage.py migrate Website 0001_initial`
+
+    #`python manage.py createsuperuser` name: admin psswd: admin (Whatever you want super user to be)

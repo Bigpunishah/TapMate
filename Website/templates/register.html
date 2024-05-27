@@ -1,10 +1,10 @@
 <!-- Create a block so it can be used in the base.html file -->
 {% extends 'base.html' %}
 
-{% block content %}
-
 <!-- Page title -->
-<!-- {% block title %}Register - TapMate{% endblock %} -->
+{% block title %}Register - TapMate{% endblock %}
+
+{% block content %}
 
 
 <div class="col-md-6 offset-md-3 mt-5">
@@ -24,13 +24,23 @@
 
         <!-- Checks for erros & displays them on screen -->
         {% if form.errors %}
-			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
 			  Your Form Has Errors
 			  {% for field in form %}
 			  	{% if field.errors %}
 			  		{{ field.errors }}
 			  	{% endif %}
 			  {% endfor %}
+
+			  <!-- Added errors -->
+			  {% if form.non_field_errors %}
+            <ul>
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
 			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		{% endif %}

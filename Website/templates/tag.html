@@ -1,109 +1,161 @@
 {% extends 'base.html' %}
 
-{% block content %}
-
 {% block title %} {{tap_tag.tag_name}} - TapMate{% endblock %}
+
+{% block content %}
+{% load static %}
+
 <br><br><br><br><br>
 
-<div class="taptag">
-    <h1 class="taptag-header">Tap Tag: {{tap_tag.tag_name}}</h1>
+<div class="taptag cust-card">
+  
+  
+  {% if user.is_authenticated %}
+  <!-- Logged in -->
 
+    {% if tagtag_initialized %}
+    <!-- Logged in - Initialized -->
 
-
-
-
-
-    <!-- Logged in? -->
-    {% if user.is_authenticated %}
-        <!-- Tag initialized? -->
-        {% if tagtag_initialized %}
-        <div class="taptag-content">
-            <!-- Own tag? -->
-            {% if owners_tag %}
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        {{tap_tag.tag_name}}
-                    </button>
-                  </h2>
-                  <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Tap tag data
-                        <button class="custom-button">Edit tag</button>
-                    </div>
-                  </div>
-                </div>
+      {% if owners_tag %}
+      <!-- Logged in - Initialized - Own Tag (Editable) -->
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  {{tap_tag.tag_name}}
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Tap tag data
+                  <button class="custom-button">Edit tag</button>
               </div>
-            <div class="centered-button">
-                <button class="custom-button">Edit Tag info!</button>
             </div>
-
-            {% else %}
-            <!-- Not owner but initialized -->
-
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        {{tap_tag.tag_name}}
-                    </button>
-                  </h2>
-                  <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Tap tag data as a viewer
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-            
-
-            {% endif %}
+          </div>
+        </div>
+        
+        <div class="centered-button">
+            <button class="custom-button">Edit Tag info!</button>
         </div>
 
-        {% else %}
-        <!-- Not initialized but logged in  -->
-        <div class="taptag-content">
-            <h3>Claim this tag <a href="#" class="custom-button2">Here!</a></h3>
+      {% else %}
+      <!-- Logged in - Initialized - Not Own Tag (View Only) -->
 
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Launch demo modal
-            </button>
-            
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                    ...
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-                </div>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  {{tap_tag.tag_name}} View Only
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Tap tag data as a viewer
+              </div>
             </div>
+          </div>
         </div>
-        {% endif %}
 
-    
+      {% endif %}
+
     {% else %}
-        <!-- Not logged in & checking if initialized -->
-        {% if tagtag_initialized != 'True' %}
-        <h3>Claim this tag: <a href="#" class="custom-button2">Login to claim</a></h3>
-        <p>vShould not view this!</p>     
+    <!-- Logged in - Not initialized (Claimable) -->
 
-        {% endif %}
+      <div id="claimtag">
+        <div class="offset-md-2" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4 d-flex justify-content-center align-items-center text-center">
+              <img src="{% static 'img/nfc_picture-nobg.png' %}" class="img-fluid rounded-start" alt="..." style="max-width: 100%; height: auto;">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{tap_tag.tag_name}}</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <!-- Button trigger modal -->
+                <button type="button" class="custom-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Claim this tag!
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Claim This Tag</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <h5>{{tap_tag.tag_name}}</h5> 
+                <br>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Agree to <a href="#">terms</a> & <a href="#">services</a>.
+                  </label>
+                </div>
+                  <p>Don't worry, we do <strong>NOT</strong> sell your information!</p>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="custom-button" data-bs-dismiss="modal">Cancel</button>
+              <!-- !Fix here & js to not allow user to pass without claiming -->
+              <button type="button" class="custom-button2"> <a href="{% url 'claim_tag' tap_tag.gaurdian %}" style="text-decoration: none; color: inherit;">Claim tag</a></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      </div>
+
+
+
     {% endif %}
+
+
+  {% else %}
+  <!-- Not logged in -->
+
+    {% if tagtag_initialized %}
+    <!-- Not logged in - Initialized (View Only)-->
+
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                {{tap_tag.tag_name}} View Only
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Tap tag data as a viewer
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    {% else %}
+    <!-- Not logged in - Not Initialized (Login to claim)-->
+
+      <h3>Claim this tag: <a href="#" class="custom-button2">Login to claim</a></h3>    
+
+
+    {% endif %}
+
+
+
+  {% endif %}
+
 </div>
 
 <br><br><br><br><br><br>
 <br><br><br><br><br>
 <br><br><br><br><br>
 {% endblock %}
+
+
+
+<!-- ! Rewrite -->
+

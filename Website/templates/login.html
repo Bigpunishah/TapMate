@@ -1,15 +1,16 @@
 <!-- Create a block so it can be used in the base.html file -->
 {% extends 'base.html' %}
 
-{% block content %}
-
 <!-- Page title -->
 {% block title %}Login - TapMate{% endblock %}
+
+{% block content %}
+
 
 <!-- Center the div -->
 <div class="col-md-6 offset-md-3 mt-5">
 
-  <br><br><br><br>
+  <br><br>
   <br>
     <br/>
     <form method="POST" action="{% url 'login' %}" >

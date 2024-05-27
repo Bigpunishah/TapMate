@@ -7,8 +7,10 @@ urlpatterns = [
     path('login/', views.login_user, name='login'), 
     path('logout/', views.logout_user, name='logout'),
     path('register/', views.register_user, name='register'),
+    path('taptags', views.users_tags, name='taptags'),
     # May need to update poorimary key to a a string for the object id.
-    path('taptag/<int:primary_key>', views.individual_tap_tag, name='taptag'),
+    path('tag/<int:primary_key>', views.individual_tap_tag, name='tag'),
+    path('claim_tag/<int:primary_key>', views.claim_tag, name='claim_tag'),
 
 
 ]
