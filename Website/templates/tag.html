@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% block title %} {{tap_tag.tag_name}} - TapMate{% endblock %}
+<br><br><br><br><br>
+
+<div class="taptag">
+    <h1 class="taptag-header">Tap Tag: {{tap_tag.tag_name}}</h1>
+
+
+
+
+
+
+    <!-- Logged in? -->
+    {% if user.is_authenticated %}
+        <!-- Tag initialized? -->
+        {% if tagtag_initialized %}
+        <div class="taptag-content">
+            <!-- Own tag? -->
+            {% if owners_tag %}
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        {{tap_tag.tag_name}}
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Tap tag data
+                        <button class="custom-button">Edit tag</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div class="centered-button">
+                <button class="custom-button">Edit Tag info!</button>
+            </div>
+
+            {% else %}
+            <!-- Not owner but initialized -->
+
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        {{tap_tag.tag_name}}
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Tap tag data as a viewer
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            
+
+            {% endif %}
+        </div>
+
+        {% else %}
+        <!-- Not initialized but logged in  -->
+        <div class="taptag-content">
+            <h3>Claim this tag <a href="#" class="custom-button2">Here!</a></h3>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Launch demo modal
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    ...
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+    
+    {% else %}
+        <!-- Not logged in & checking if initialized -->
+        {% if tagtag_initialized != 'True' %}
+        <h3>Claim this tag: <a href="#" class="custom-button2">Login to claim</a></h3>
+        <p>vShould not view this!</p>     
+
+        {% endif %}
+    {% endif %}
+</div>
+
+<br><br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+{% endblock %}

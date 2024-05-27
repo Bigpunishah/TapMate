@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import SignUpForm
 from .models import TapTag
@@ -51,10 +52,14 @@ def logout_user(request):
 def register_user(request):
     # Check to see if it is the post metod
     if request.method == 'POST':
+        # Testing purposes
+        all_users = User.objects.all()
+        print(all_users)
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
             # Authenticate & login
+            # todo - check username if already selected
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
@@ -64,8 +69,6 @@ def register_user(request):
     else:
         # Not POSTing yet but load form
         form = SignUpForm()
-        # !Update code to where register shows certain portions of code on nav bar - update colors for login & register.
-        return render(request, 'register.html', {'form': form, 'is_register_page': True})
     return render(request, 'register.html', {'form': form, 'is_register_page': True})
 
 
@@ -73,11 +76,46 @@ def register_user(request):
 
 # Show individual taptag
 def individual_tap_tag(request, primary_key):
+    # Using the gaurdian value to show the tag
+    # todo - edit a 404 page
+    tap_tag = get_object_or_404(TapTag, gaurdian = primary_key) # Catch non-existent tags
+    # todo - turn off debug to see proper 404
+    # tap_tag = TapTag.objects.get(gaurdian = primary_key)
+
+    # todo - show disabled tags
+    
     if request.user.is_authenticated:
-        # Look up record
-        tap_tag = TapTag.objects.get(id = primary_key)
-        # ! UPDATE CODE HERE
-        return render(request, 'record.html', {'tap_tag': tap_tag})
+        # If the authenticated users email matches the email assigned to the tag
+        if request.user.email == tap_tag.email_assigned_to:
+            # Render the tag with the True for owners tag
+            return render(request, 'tag.html', {'tap_tag': tap_tag, 'owners_tag' : True})
+        else:
+            # Render the tag in view-only mode
+            return render(request, 'tag.html', {'tap_tag': tap_tag})
     else:
-        messages.success(request, "Must be logged in!")
+        # If the tag is initialized, show the page of the tag for viewers
+        if tap_tag.initialized == 'True':
+            return render(request, 'tag.html', {'tap_tag': tap_tag, 'tagtag_initialized': True})
+        else:
+            # Not initialized & not logged in
+            messages.success(request, "Sorry, that tag you're looking for does not exist")
+            return redirect('home')
+        
+def claim_tag(request, primary_key):
+    tap_tag = get_object_or_404(TapTag, gaurdian = primary_key)
+    # logged in?
+    if request.user.is_authenticated:
+        # Assign values as claiming
+        tap_tag.initialized = 'True'
+        tap_tag.tag_name = 'New Tag!'
+        tap_tag.tag_location = '123 Bleep Bloop St'
+        tap_tag.email_assigned_to = request.user.email
+        tap_tag.save() # Save to db
+        messages.success(request, "Tag Saved! Update it whenever you want!")
         return redirect('home')
+    else:
+        messages.success(request, "Must login to claim this tag!")
+        return redirect('login')
+    
+        
+        

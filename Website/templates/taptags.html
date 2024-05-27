@@ -7,6 +7,50 @@
 {% block title %}Tags - TapMate{% endblock %}
 
 
+<h2>Your Tap Tags:</h2>
+  {% if tap_tags %}
+
+  <ul>
+    <!-- for loop for all tags associated with email -->
+    {% for tag in tap_tags %}
+
+    <!-- List tags -->
+    <li>{{ tag }}</li>
+
+    {% endfor %}
+  </ul>
+  {% else %}
+
+  <br>
+  <br>
+  <div class="card cust-card custom-container">
+    <div class="card-body">
+      <h4>Sorry, no TapTags found associated with your account.</h4>
+      <br /><br />
+      <h5>
+        If you are having trouble feel free to
+        <a href="#" style="text-decoration: underline">contact support</a>
+        <p>Add how to add a tap tag & such</p>
+      </h5>
+    </div>
+  </div>
+
+{% endif %}
+
+<div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            {{tap_tag.tag_name}}
+        </button>
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">Tap tag data
+            <button class="custom-button">hello</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 

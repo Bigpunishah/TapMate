@@ -1,5 +1,38 @@
 
 
+.taptag {
+  margin: 0 auto; /* Center the element horizontally */
+  text-align: center; /* Center the text */
+  left: 50%;
+  right: 50%;
+  max-width: 800px; /* Limit the maximum width */
+  padding: 20px; /* Add padding for spacing */
+  background-color: #fff; /* Background color */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for a subtle 3D effect */
+  transition: background-color 0.3s ease-in-out; /* Smooth transition for background color */
+}
+
+.taptag:hover{
+  background-color: #d3d3d3b4;
+}
+
+.taptag-header {
+  text-align: center; /* Center the text */
+  color: #5a5af3; /* Primary color */
+  font-size: 2em; /* Larger font size for emphasis */
+  margin-bottom: 20px; /* Spacing below the header */
+}
+
+
+
+.centered-button {
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center the button */
+  margin-top: 20px; /* Spacing above the button */
+}
+
+
 .custom-navbar {
     padding-left: 20px;
     padding-right: 20px;
@@ -11,6 +44,7 @@
 .custom-container {
     margin-right: 40px; /* Auto margin for centering */
     margin-left: 40px; /* Auto margin for centering */
+    justify-content: center;
 }
 
 
@@ -19,9 +53,15 @@
   padding: 5px; /* Default padding */
   border-radius: 10px; /* Optional: Add border radius if desired */
 }
+.centered-card {
+  margin: 0 auto; /* Horizontally centers the element */
+  float: none; /* Ensures the element does not float */
+  max-width: 50%; /* Optional: Set a maximum width if needed */
+}
+
 
 .cust-border {
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
     border-radius: 6px; /* Adjust this value to change the corner radius */
   }
   

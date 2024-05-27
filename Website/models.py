@@ -9,7 +9,11 @@ class TapTag(models.Model):
     tag_name = models.CharField(max_length=50)
     tag_location = models.CharField(max_length=50)
     email_assigned_to = models.CharField(max_length=50)
-    intialized = models.CharField(max_length=10) # Initialized yet or not
+    initialized = models.CharField(max_length=10) # Initialized yet or not
+    gaurdian = models.CharField(max_length=25)
+    enabled = models.CharField(max_length=10)
+    # items to adding
+    # Data point/ points
 
     def __str__(self):
         return (f"{self.tag_name} - {self.tag_location}")

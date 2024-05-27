@@ -11,10 +11,12 @@
           <li class="nav-item"><a class="nav-button" href="{% url 'login' %}">Login</a></li>
         {% else %}
           {% if user.is_authenticated %}
+          <!-- todo - Add underlines for current page location -->
             <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url '#' %}">Tags</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url '#' %}">Account</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url '#' %}">Settings</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Tags</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Settings</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Account</a></li>
           {% else %}
             <li class="nav-item"><a class="nav-link scrollto active" href="#hero">Home</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#about">About</a></li>
