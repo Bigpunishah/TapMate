@@ -1,5 +1,118 @@
 
 
+/* Dark color #34315A */
+
+
+/*--------------------------------------------------------------
+# Homepage logged in
+--------------------------------------------------------------*/
+
+
+
+
+/*--------------------------------------------------------------
+# TapTag
+--------------------------------------------------------------*/
+.taptags-page-title{
+  max-width: 900px;
+  position: relative;
+  width: 100%; /* fills to the max */
+  height: 36px;
+  border: 1px black;
+  margin: 10px auto;
+  left: 20px;
+
+}
+
+.taptags-claimed,
+.taptags-claimed:focus{
+  max-width: 1100px;
+  position: relative;
+  width: 90%; /* fills to the max */
+  height: 70px;
+  border: 1px black;
+  margin: 10px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgb(0, 0, 0, 0.1);
+  background-color: #E6F7FF; /* for better visibility */
+  transition: .3s ease-in-out;
+}
+
+.taptags-claimed:hover{
+  background-color: #ffffff;
+}
+
+.taptag-claimed-title {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  font-size: 20px;
+  transform: translateY(-40%);
+  display: flex; /* Enable flexbox */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  padding-right: 20px;
+}
+
+.taptags-page{
+  position: relative;
+  max-width: 900px; /* Set the maximum width */
+  width: 100%; /* Allow the div to fill the container's width up to the max-width */
+  margin-left: 0; /* Ensure it aligns to the left */
+  /* Optionally, add additional styles as needed */
+  
+}
+
+.taptag-selection-btn{
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  border-radius: 50px;
+  color: #fff;
+  border: 2px solid #1ea73b;
+  background: #1ea73b;
+  max-height: 60px;
+  max-width: 150px;
+  width: 100%;
+  font-size: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: color 0.3s, background 0.3s;
+}
+
+.taptag-selection-btn:hover{
+  background-color: #ffffff;
+  color: #1ea73b;
+}
+
+.taptag-view-btn{
+  position: absolute;
+  top: 50%;
+  right: 170px;
+  transform: translateY(-50%);
+  border-radius: 50px;
+  color: #fff;
+  border: 2px solid #5a5af3;
+  background: #5a5af3;
+  max-height: 60px;
+  max-width: 150px;
+  width: 100%;
+  font-size: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: color 0.3s, background 0.3s;
+}
+
+.taptag-view-btn:hover{
+  background-color: #fff;
+  color: #5a5af3;
+}
+
 .taptag {
   margin: 0 auto; /* Center the element horizontally */
   max-width: 800px; /* Limit the maximum width */
@@ -39,8 +152,63 @@
   font-size: 2em; /* Larger font size for emphasis */
   margin-bottom: 20px; /* Spacing below the header */
 }
+/* ______________________________________ */
+/* Customs made need to edit */
+/* ______________________________________ */
+
+.text-title h2{
+  font-size: 32px;
+  font-weight: bold;
+  position: relative;
+  color: #434175;
+}
+
+.text-title h3{
+  font-size: 22px;
+  position: relative;
+  color: #434175;
+}
+
+@media(max-width:750px){
+  .text-title h3{
+    display: none;
+  }
+
+}
+
+@media(max-width: 992px){
+  
+  .text-title h2{
+    font-size: 20px;
+  }
+
+  .text-title h3{
+    font-size: 18px;
+  }
 
 
+  .taptag-selection-btn{
+    max-width: 100px;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 20px;
+  }
+
+  .taptag-view-btn{
+    max-width: 100px;
+    font-size: 20px;
+    border-radius: 10px;
+    right: 120px;
+  }
+
+  .taptags-claimed{
+    width: 90%;
+  }
+}
+
+.test{
+  right: 0px;
+}
 
 .centered-button {
   display: flex; /* Use flexbox */
@@ -60,7 +228,11 @@
 .custom-container {
     margin-right: 40px; /* Auto margin for centering */
     margin-left: 40px; /* Auto margin for centering */
-    justify-content: center;
+}
+
+.centered-div{
+  display: flex;
+  justify-content: center;
 }
 
 
@@ -539,6 +711,7 @@ body {
   
     #hero .hero-img img {
       width: 70%;
+      right: 40px;
     }
   }
   
@@ -564,46 +737,7 @@ body {
     }
   }
   
-  /*--------------------------------------------------------------
-  # Sections General
-  --------------------------------------------------------------*/
-  section {
-    padding: 60px 0;
-  }
-  
-  .section-bg {
-    background-color: #E6F7FF;
-  }
-  
-  .section-title {
-    text-align: center;
-    padding-bottom: 30px;
-  }
-  
-  .section-title h2 {
-    font-size: 32px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    position: relative;
-    color: #434175;
-  }
-  
-  .section-title h2::after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 50px;
-    height: 3px;
-    background: #5a5af3;
-    bottom: 0;
-    left: calc(50% - 25px);
-  }
-  
-  .section-title p {
-    margin-bottom: 0;
-  }
+
   
   /*--------------------------------------------------------------
   # About
@@ -871,4 +1005,62 @@ body {
     background-color: #E6F7FF;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
   }
-  
+
+  /*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+section {
+  padding: 60px 0;
+}
+
+.section-bg {
+  background-color: #eeeef5;
+}
+
+.section-title {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.section-img{
+  width: 700px;
+  border-radius: 100%;
+}
+
+
+.service-container{
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.section-container{
+    gap: 40px;
+    width: 100%;
+
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  color: #434175;
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #5a5af3;
+  bottom: 0;
+  left: calc(50% - 25px);
+}
+
+.section-title p {
+  margin-bottom: 0;
+}
+

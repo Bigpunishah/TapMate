@@ -15,6 +15,7 @@ def home(request):
         user_email = request.user.email
         # filter by tags by email association.
         tap_tags = TapTag.objects.filter(email_assigned_to=user_email)
+        return render(request, 'home.html', {'tap_tags': tap_tags, 'username': request.user.username})
     else:
         tap_tags = None
     

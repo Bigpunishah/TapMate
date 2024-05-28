@@ -12,11 +12,12 @@
 	<br>
 	<br>
 	
-	<div class="custom-container cust-card cust-border">
 
-	
+	<div class="section-title">
+		<h2>Register</h2>
+	</div>
 
-    <h3 class="text-dark">Register</h3>
+	<div class="card custom-container cust-card cust-border">
     <br>
 
     <form method="POST" action="">
@@ -47,10 +48,13 @@
 
         {{ form.as_p }}
 
-        <button type="submit" class="custom-button2">Register</button>
+        
+		<div class="section-title">
+			<h2><button type="submit" class="custom-button2">Register</button></h2>
+		</div>
     <form>
 
-	<div class="offset-md-4">
+	<div class="offset-md-5">
 		<span class="form-text text-muted"><small>Have an account? <a href="{% url 'login' %}">Login!</a></small></span>
 	</div>
 		
