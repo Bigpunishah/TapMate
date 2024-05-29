@@ -29,13 +29,10 @@
            <h3>{{ tag.tag_location }}</h3>
         </div>
         <div id="taptag btn">
-          <a class="taptag-selection-btn" href="#">Edit</a>
-          <a class="taptag-view-btn"  href="#">Select</a>
+          <!-- <a class="taptag-selection-btn" href="#">Edit</a> -->
+          <a class="taptag-view-btn"  href="{% url 'tag' tag.gaurdian %}">Select</a>
         </div>
     </div>
-
-    <!-- !Next work on the taptag page selection  -->
-    <!-- !Keep in mind the phone perspective -->
     
 
     {% endfor %}

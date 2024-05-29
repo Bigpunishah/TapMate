@@ -7,7 +7,7 @@
 
 <br><br><br><br><br>
 
-<div class="taptag cust-card">
+<div class="container">
   
   
   {% if user.is_authenticated %}
@@ -18,62 +18,94 @@
 
       {% if owners_tag %}
       <!-- Logged in - Initialized - Own Tag (Editable) -->
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                  {{tap_tag.tag_name}}
-              </button>
-            </h2>
-            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">Tap tag data
-                  <button class="custom-button">Edit tag</button>
-              </div>
-            </div>
+        {% if tap_tag %}
+          <div class="section-title">
+            <h2>{{tap_tag.tag_name}}</h2>
           </div>
-        </div>
+          <div class="taptag">
+            <div class="item">
+              <h2>Name:</h2> <h3>{{tap_tag.tag_name}}</h3>
+            </div>
+            
+            <br>
+            <br>
+            <div class="item">
+              <h2>Location:</h2>
+              <h3>{{tap_tag.tag_location}}</h3>
+            </div>
+            <br>
+            <br>
+            <div class="desription-item-title">
+              <h2>Descritption:</h2>
+            </div>
+              <div class="desription-item">
+                <h6>{{tap_tag.description}}</h6>
+
+              </div>
+              <div class="centered-button">
+                <a href="{% url 'edit_tag' tap_tag.gaurdian  %}" class="custom-button2">Edit Tag info!</a>
+              </div>
+          </div>
+
+      
+        {% endif %}
         
-        <div class="centered-button">
-            <button class="custom-button">Edit Tag info!</button>
-        </div>
+        
+        
 
       {% else %}
       <!-- Logged in - Initialized - Not Own Tag (View Only) -->
 
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                  {{tap_tag.tag_name}} View Only
-              </button>
-            </h2>
-            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">Tap tag data as a viewer
-              </div>
-            </div>
+        {% if tap_tag %}
+        <div class="section-title">
+          <h2>{{tap_tag.tag_name}}</h2>
+        </div>
+        <div class="taptag">
+          <div class="item">
+            <h2>Name:</h2> <h3>{{tap_tag.tag_name}}</h3>
+          </div>
+          
+          <br>
+          <br>
+          <div class="item">
+            <h2>Location:</h2>
+            <h3>{{tap_tag.tag_location}}</h3>
+          </div>
+          <br>
+          <br>
+          <div class="item">
+            <h2>Descritption:</h2>
+            {{tap_tag.description}}
           </div>
         </div>
+    
+        {% endif %}
 
       {% endif %}
 
     {% else %}
     <!-- Logged in - Not initialized (Claimable) -->
 
-      <div id="claimtag">
+      <div id="claimtag" class="container">
         <div class="offset-md-2" style="max-width: 540px;">
           <div class="row g-0">
             <div class="col-md-4 d-flex justify-content-center align-items-center text-center">
-              <img src="{% static 'img/nfc_picture-nobg.png' %}" class="img-fluid rounded-start" alt="..." style="max-width: 100%; height: auto;">
+              <img src="{% static 'img/nfc_picture-nobg.png' %}" class="img-fluid rounded-start" alt="..." style="max-width: 80%; height: auto;">
             </div>
             <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">{{tap_tag.tag_name}}</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <!-- Button trigger modal -->
-                <button type="button" class="custom-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  Claim this tag!
-                </button>
+              <div class="card">
+                <div style="margin: 10px;">
+                  <div class="card-body">
+                    <h5 class="card-title">{{tap_tag.tag_name}}</h5>
+                    <p class="card-text">This is an unitiialized TapTag - Tap your phone on top of the tag to access the.</p>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="custom-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      Claim this tag!
+                    </button>
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -121,25 +153,59 @@
     {% if tagtag_initialized %}
     <!-- Not logged in - Initialized (View Only)-->
 
-      <div class="accordion accordion-flush" id="accordionFlushExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                {{tap_tag.tag_name}} View Only
-            </button>
-          </h2>
-          <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-            <div class="accordion-body">Tap tag data as a viewer
-            </div>
-          </div>
-        </div>
+      {% if tap_tag %}
+      <div class="section-title">
+        <h2>{{tap_tag.tag_name}}</h2>
       </div>
+      <div class="taptag">
+        <div class="item">
+          <h2>Name:</h2> <h3>{{tap_tag.tag_name}}</h3>
+        </div>
+        
+        <br>
+        <br>
+        <div class="item">
+          <h2>Location:</h2>
+          <h3>{{tap_tag.tag_location}}</h3>
+        </div>
+        <br>
+        <br>
+        <div class="desription-item-title">
+          <h2>Descritption:</h2>
+        </div>
+          <div class="desription-item">
+            <h6>{{tap_tag.description}}</h6>
+          </div>
+      </div>
+
+      {% endif %}
 
 
     {% else %}
     <!-- Not logged in - Not Initialized (Login to claim)-->
 
-      <h3>Claim this tag: <a href="#" class="custom-button2">Login to claim</a></h3>    
+    <div id="claimtag" class="container">
+      <div class="offset-md-2" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4 d-flex justify-content-center align-items-center text-center">
+            <img src="{% static 'img/nfc_picture-nobg.png' %}" class="img-fluid rounded-start" alt="..." style="max-width: 80%; height: auto;">
+          </div>
+          <div class="col-md-8">
+            <div class="card">
+              <div style="margin: 10px;">
+                <div class="card-body">
+                  <h5 class="card-title">{{tap_tag.tag_name}}</h5>
+                  <p class="card-text">This is an unitiialized TapTag - Tap your phone on top of the tag to access the.</p>
+                  <h3>Claim this tag: <a href="#" class="custom-button2">Login to claim</a></h3> 
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+         
 
 
     {% endif %}
@@ -154,8 +220,4 @@
 <br><br><br><br><br>
 <br><br><br><br><br>
 {% endblock %}
-
-
-
-<!-- ! Rewrite -->
 

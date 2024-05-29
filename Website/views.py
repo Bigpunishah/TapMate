@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .forms import SignUpForm
+from .forms import SignUpForm, EditTapTagForm
 from .models import TapTag
 
 # Create a dir named `templates` to add .html files
@@ -140,8 +140,8 @@ def claim_tag(request, primary_key):
     if request.user.is_authenticated:
         # Assign values as claiming
         tap_tag.initialized = 'True'
-        tap_tag.tag_name = 'New Tag!'
-        tap_tag.tag_location = '123 Bleep Bloop St'
+        tap_tag.tag_name = 'New Tag'
+        tap_tag.tag_location = 'Middle Earth'
         tap_tag.email_assigned_to = request.user.email
         user_email = request.user.email
         if not user_email:
@@ -154,5 +154,39 @@ def claim_tag(request, primary_key):
         messages.success(request, "Must login to claim this tag!")
         return redirect('login')
     
+
+def how_to(request):
+    if request.user.is_authenticated:
+        return render(request, 'add_tag_instructions.html')
+    else:
+        messages.success(request, "Must be logged in")
+        return redirect('home')
+    
+    
         
-        
+
+def edit_tag(request, primary_key):
+    try:
+        tap_tag = TapTag.objects.get(gaurdian = primary_key)
+    except:
+        messages.success(request, 'This tag does not exist!')
+        return redirect('home')
+    
+    if request.user.is_authenticated:
+        # Logged in
+        if tap_tag.initialized == 'True':
+            #Logged in - Tag initialialized
+            if request.user.email == tap_tag.email_assigned_to:
+                # Logged in - Tag initialized - Owner of tag (Editable)
+
+                form = EditTapTagForm(request.POST or None, instance=tap_tag)
+                if form.is_valid():
+                    form.save()
+                    messages.success(request, "Your Tag Has been Saved!")
+                    return redirect('tag', tap_tag.gaurdian )
+                return render(request, 'edit_tag.html', {'form': form, 'tag_gaurdian': tap_tag.gaurdian, 'owners_tag' : True})
+        return render(request, 'add_tag_instructions.html')
+    else:
+        messages.success(request, "Must be logged in")
+        return redirect('home')
+    

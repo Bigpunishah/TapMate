@@ -12,6 +12,7 @@ class TapTag(models.Model):
     initialized = models.CharField(max_length=10) # Initialized yet or not
     gaurdian = models.CharField(max_length=25)
     enabled = models.CharField(max_length=10)
+    description = models.TextField(blank=True)
     # items to adding
     # Data point/ points
 

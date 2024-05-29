@@ -2,6 +2,7 @@ from typing import Any
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import TapTag
 
 
 class SignUpForm(UserCreationForm):
@@ -47,3 +48,17 @@ class SignUpForm(UserCreationForm):
             return email + " is taken"
         else:
             return None
+        
+
+class EditTapTagForm(forms.ModelForm):
+    tag_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Name", "class": "form-control cust-border"}), label="")
+    tag_location = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Location", "class": "form-control cust-border"}), label="")
+    description = forms.CharField(
+        required=False,
+        widget=forms.Textarea(attrs={"placeholder": "Description", "class": "form-control cust-border"}),
+        label=""
+    )
+
+    class Meta:
+        model = TapTag
+        fields = ['tag_name', 'tag_location', 'description']

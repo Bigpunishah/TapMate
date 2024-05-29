@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-md-6 offset-md-3">
+    <div class="section-title">
+        <h2>Edit Tag</h2>
+    </div>
+
+    <form method="POST">
+        {% csrf_token %} <!--Added so hackers dont get in-->
+
+        {{ form.as_p }}
+
+        <button type="submit" class="custom-button2">Save</button>
+        <a href="{% url 'tag' tag_gaurdian %}" class="custom-button-cancel">Cancel</a>
+
+    </form>
+
+
+</div>
+
+
+    
+
+{% endblock %}
